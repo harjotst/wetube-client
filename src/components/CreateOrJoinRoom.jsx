@@ -21,19 +21,20 @@ const CreateOrJoinRoom = () => {
     return errors;
   };
 
-  const submitFormData = (values, { resetForm }) => {
+  const submitFormData = (values, { setSubmitting, setErrors, resetForm }) => {
+    setSubmitting(true);
     if (values.username && values.videoUrl) {
       createRoom(values.username, values.videoUrl)
         .then((value) => {
           login(value.data, value.headers.authorization);
-
           navigate("../room");
         })
         .catch((error) => {
-          setFieldError("general", error.response.data.message);
+          setErrors({
+            [error.response.data.reason]: error.response.data.message,
+          });
         })
         .finally(() => {
-          resetForm(initialFormValues);
           setSubmitting(false);
         });
     } else if (values.username && values.roomId) {
@@ -43,10 +44,11 @@ const CreateOrJoinRoom = () => {
           navigate("../room");
         })
         .catch((error) => {
-          setFieldError("general", error.response.data.message);
+          setErrors({
+            [error.response.data.reason]: error.response.data.message,
+          });
         })
         .finally(() => {
-          resetForm(initialFormValues);
           setSubmitting(false);
         });
     }

@@ -38,7 +38,7 @@ const SocketPlayer = ({ initialPlayerState }) => {
 
     if (!videoData.paused) {
       videoData.time =
-        (currentTime - videoData.lastUpdated) / 1000 + videoData.videoTime;
+        (currentTime - videoData.lastUpdated) / 1000 + videoData.time;
     }
 
     return {
@@ -111,15 +111,7 @@ const SocketPlayer = ({ initialPlayerState }) => {
 
     setPlayer(event.target);
 
-    dispatch({
-      type: "reset",
-      payload: {
-        youtubeId: youtubeId,
-        paused: paused,
-        time: time,
-        duration: duration,
-      },
-    });
+    event.target.seekTo(time);
 
     if (paused) {
       event.target.pauseVideo();

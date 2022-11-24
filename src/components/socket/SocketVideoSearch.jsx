@@ -12,8 +12,6 @@ const SocketVideoSearch = () => {
   const initialFormValues = { youtubeVideoLink: "" };
 
   const submitVideoChangeRequest = (values, { resetForm }) => {
-    console.log(values);
-
     socket.emit("change-video", values.youtubeVideoLink);
 
     resetForm({ values: initialFormValues });
