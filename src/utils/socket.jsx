@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import { io } from "socket.io-client";
 
-const serverUrl = "http://localhost:4000";
+const serverUrl = "http://167.99.183.90:4000";
 
 const socket = io(serverUrl);
 
