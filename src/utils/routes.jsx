@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://167.99.183.90/api/v1/";
+const URL = "https://watch2gether.ca/api/v1/";
 
 const createRoom = (username, videoUrl) => {
   return axios({

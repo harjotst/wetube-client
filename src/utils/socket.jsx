@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import { io } from "socket.io-client";
 
-const serverUrl = "http://167.99.183.90";
+const serverUrl = "https://watch2gether.ca";
 
 const socket = io(serverUrl);
 
